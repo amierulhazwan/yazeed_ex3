@@ -12,10 +12,9 @@ class MyApp extends StatelessWidget {
   final idController = TextEditingController();
   final passController = TextEditingController();
   final emailController = TextEditingController();
-  
+
   bool _isOff = true;
 
-  
   void submitData() {
     final enteredID = idController.text;
     final enteredPASS = passController.text;
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
     if (enteredID.isEmpty || enteredPASS.isEmpty || enteredEMAIL.isEmpty) {
       return;
     }
-    
+
     print('$enteredID');
   }
 
@@ -63,7 +62,7 @@ class MyApp extends StatelessWidget {
                   width: 300,
                   child: Column(
                     children: [
-                      TextField(                       
+                      TextField(
                         decoration: InputDecoration(labelText: 'Name'),
                         controller: idController,
                         onSubmitted: (val) => submitData,
@@ -79,47 +78,50 @@ class MyApp extends StatelessWidget {
                         onSubmitted: (val) => submitData,
                       ),
                       ValueListenableBuilder<TextEditingValue>(
-                        valueListenable: passController,
-                        builder:(context,value,child){
-                          return /* Stack(
+                          valueListenable: passController,
+                          builder: (context, value, child) {
+                            return /* Stack(
                             children:[ Positioned(
                               top:50,
-                              child:  */ElevatedButton(
-                                onPressed: value.text.isNotEmpty ? () {
-                                  Navigator.push(
-                                                context,
-                                                MaterialPageRoute(builder: (context) => home()),
-                                              );
-                                }:null,
-                                child: Text('SIGN UP'),
-                              ),
+                              child:  */
+                                ElevatedButton(
+                              onPressed: value.text.isNotEmpty
+                                  ? () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => home()),
+                                      );
+                                    }
+                                  : null,
+                              child: Text('SIGN UP'),
+                            );
                             /* ),
                             ]); */
-                        }
-                      ),
+                          }),
                       Row(
                         children: [
-                          Text('Choose gender: ',style:TextStyle(color: Colors.black)),
+                          Text('Choose gender: ',
+                              style: TextStyle(color: Colors.black)),
                           DropDownDemo(),
                         ],
                       ),
                     ],
                   )),
             ),
-            // ElevatedButton(              
+            // ElevatedButton(
             //     child: Text(_isOff ? 'Sign up':'Sign Up',
             //         style: TextStyle(color: Colors.white)),
             //     onPressed: () {
             //       setState((){
             //         _isOff = !_isOff;
             //       }
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => home()),
-                  // );
-              //     );},
-              // ),
-            
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => home()),
+            // );
+            //     );},
+            // ),
           ],
         ),
       ),
